@@ -1,0 +1,75 @@
+ body {
+     background: linear-gradient(135deg, #b3d9ff, #e6f2ff);
+
+ }
+
+
+
+ h2,
+ h4 {
+     color: #004080;
+ }
+
+ .card {
+     border-radius: 12px;
+     overflow: hidden;
+     transition: transform 0.3s ease;
+     border: none;
+ }
+
+
+
+ .card img {
+     height: 180px;
+     object-fit: cover;
+ }
+
+ .card-body {
+     background: linear-gradient(135deg, #cce7ff, #f9fcff);
+ }
+
+ .carousel-control-prev-icon,
+ .carousel-control-next-icon {
+     background-color: rgba(0, 64, 128, 0.6);
+     border-radius: 50%;
+ }
+
+ .carousel-indicators [data-bs-target] {
+     background-color: #004080;
+ }
+
+ .btn-primary {
+     background: linear-gradient(135deg, #66b3ff, #3399ff);
+     border: none;
+ }
+
+ .btn-primary:hover {
+     background: linear-gradient(135deg, #3399ff, #0073e6);
+ }
+
+ .job-section {
+     background: linear-gradient(135deg, #cce7ff, #f9fcff);
+     border-radius: 15px;
+     padding: 40px;
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+     text-align: center;
+     margin-top: 50px;
+ }
+
+ .job-section h4 {
+     color: #004080;
+     font-weight: bold;
+     margin-bottom: 20px;
+ }
+
+ .job-form {
+     background: #ffffff;
+     /* أبيض */
+     border-radius: 15px;
+     padding: 30px;
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+     margin-top: 30px;
+     display: none;
+     /* مخفي افتراضياً */
+     animation: fadeIn 0.5s ease;
+ }

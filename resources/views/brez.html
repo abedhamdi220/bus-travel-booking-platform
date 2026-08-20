@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Bus Travel Booking</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- ==================== Top Navbar ==================== -->
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fas fa-bus"></i>
+            <span>Bus Travel Booking</span>
+        </div>
+        <div class="user-info">
+            <!-- أيقونة الإشعارات -->
+            <div class="icon-badge" onclick="window.location.href='notifications.html'">
+                <i class="fas fa-bell"></i>
+                <sup>3</sup>
+            </div>
+
+
+            <!-- اسم الأدمن والصورة -->
+            <span><a href="admin-profile.html">Welcome, Admin</a></span>
+            <div class="avatar"><a href="admin-profile.html">A</a></div>
+        </div>
+    </nav>
+
+    <!-- ==================== Sidebar ==================== -->
+    /*<aside class="sidebar">
+        <a href="admin-profile.html" class="sidebar-admin-profile">
+        <div class="sidebar-admin-logo" id="sidebarAdminLogo">
+            <i class="fas fa-user-circle fa-2x"></i>
+        </div>
+        <h4>Admin</h4>
+    </a>
+        <ul>
+            <li class="menu-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="menu-item">
+                <i class="fas fa-building"></i>
+                <a href="companies.html">Companies</a>
+            </li>
+            <li class="menu-item">
+                <i class="fas fa-users"></i>
+                <a href="users.html">Users</a>
+            </li>
+            <li class="menu-item">
+                <i class="fas fa-cog"></i>
+                <a href="sittings.html">Sittings</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- ==================== Main Content ==================== -->
+    <main class="main-content">
+
+        <!-- Page Title -->
+        <h2 class="page-title">📊 Dashboard</h2>
+
+
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+
+            <!-- 1. Site Visitors -->
+            <div class="stat-card visitors">
+                <div class="info">
+                    <h4>Site Visitors</h4>
+                    <h2>12,450</h2>
+                </div>
+                <div class="icon-circle">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
+
+            <!-- 2. Registered Users -->
+            <div class="stat-card users">
+                <div class="info">
+                    <h4>Registered Users</h4>
+                    <h2>3,820</h2>
+                </div>
+                <div class="icon-circle">
+                    <i class="fas fa-user-check"></i>
+                </div>
+            </div>
+
+            <!-- 3. Travel Companies -->
+            <div class="stat-card companies">
+                <div class="info">
+                    <h4>Travel Companies</h4>
+                    <h2>3</h2>
+                </div>
+                <div class="icon-circle">
+                    <i class="fas fa-building"></i>
+                </div>
+            </div>
+
+           <div class="stat-card commission">
+    <div class="info">
+        <h4>Commission This Month</h4>
+        <h2>$3,125</h2>
+    </div>
+    <div class="icon-circle">
+        <i class="fas fa-percent"></i>
+    </div>
+</div>
+            </div>
+
+        </div>
+
+
+
+        <!-- ******************** User Statistics Chart *************************** -->
+        <div class="chart-box">
+            <h3>User Statistics</h3>
+
+            <!-- Legend -->
+            <div class="chart-legend">
+                <span>
+                    <span class="color-box blue"></span> New Visitors
+                </span>
+                <span>
+                    <span class="color-box green"></span> Registered Users
+                </span>
+                <span>
+                    <span class="color-box orange"></span> Bookings
+                </span>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="chart-bars">
+
+                <!-- Jan -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="650"></div>
+                        <div class="bar green" data-value="400"></div>
+                        <div class="bar orange" data-value="250"></div>
+                    </div>
+                    <span>Jan</span>
+                </div>
+
+                <!-- Feb -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="700"></div>
+                        <div class="bar green" data-value="450"></div>
+                        <div class="bar orange" data-value="300"></div>
+                    </div>
+                    <span>Feb</span>
+                </div>
+
+                <!-- Mar -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="800"></div>
+                        <div class="bar green" data-value="550"></div>
+                        <div class="bar orange" data-value="400"></div>
+                    </div>
+                    <span>Mar</span>
+                </div>
+
+                <!-- Apr -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="750"></div>
+                        <div class="bar green" data-value="500"></div>
+                        <div class="bar orange" data-value="350"></div>
+                    </div>
+                    <span>Apr</span>
+                </div>
+
+                <!-- May -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="850"></div>
+                        <div class="bar green" data-value="600"></div>
+                        <div class="bar orange" data-value="450"></div>
+                    </div>
+                    <span>May</span>
+                </div>
+
+                <!-- Jun -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="900"></div>
+                        <div class="bar green" data-value="650"></div>
+                        <div class="bar orange" data-value="500"></div>
+                    </div>
+                    <span>Jun</span>
+                </div>
+
+                <!-- Jul -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="950"></div>
+                        <div class="bar green" data-value="700"></div>
+                        <div class="bar orange" data-value="550"></div>
+                    </div>
+                    <span>Jul</span>
+                </div>
+
+                <!-- Aug -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="880"></div>
+                        <div class="bar green" data-value="680"></div>
+                        <div class="bar orange" data-value="520"></div>
+                    </div>
+                    <span>Aug</span>
+                </div>
+                <!-- Sep -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="780"></div>
+                        <div class="bar green" data-value="580"></div>
+                        <div class="bar orange" data-value="420"></div>
+                    </div>
+                    <span>Sep</span>
+                </div>
+
+                <!-- Oct -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="720"></div>
+                        <div class="bar green" data-value="520"></div>
+                        <div class="bar orange" data-value="380"></div>
+                    </div>
+                    <span>Oct</span>
+                </div>
+
+                <!-- Nov -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="820"></div>
+                        <div class="bar green" data-value="620"></div>
+                        <div class="bar orange" data-value="480"></div>
+                    </div>
+                    <span>Nov</span>
+                </div>
+
+                <!-- Dec -->
+                <div class="bar-item">
+                    <div class="bar-columns">
+                        <div class="bar blue" data-value="1000"></div>
+                        <div class="bar green" data-value="750"></div>
+                        <div class="bar orange" data-value="600"></div>
+                    </div>
+                    <span>Dec</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ****************end users statistic ****************-->
+
+        <!-- Commission Chart -->
+<div class="chart-box">
+    <h3><i class="fas fa-chart-line"></i> Commission Revenue (Last 6 Months)</h3>
+    <div style="height: 300px;">
+        <canvas id="commissionChart"></canvas>
+    </div>
+</div>
+
+        <!-- ==================== Most Requested Destinations ==================== -->
+<div class="destinations-box">
+
+    <h3><i class="fas fa-map-marker-alt"></i> Most Requested Destinations</h3>
+    <p class="subtitle">Based on number of bookings</p>
+
+    <!-- غلاف يجمع الجدول مع الصورة -->
+    <div class="dest-content">
+        <table class="dest-table">
+            <tr>
+                <td>2,850</td>
+                <td>Damascus</td>
+            </tr>
+            <tr>
+                <td>2,150</td>
+                <td>Aleppo</td>
+            </tr>
+            <tr>
+                <td>1,620</td>
+                <td>Homs</td>
+            </tr>
+            <tr>
+                <td>1,280</td>
+                <td>Latakia</td>
+            </tr>
+            <tr>
+                <td>980</td>
+                <td>Tartous</td>
+            </tr>
+            <tr class="extra-row">
+                <td>860</td>
+                <td>Idlib</td>
+            </tr>
+            <tr class="extra-row">
+                <td>720</td>
+                <td>Deir ez-Zor</td>
+            </tr>
+            <tr class="extra-row">
+                <td>380</td>
+                <td>Raqqa</td>
+            </tr>
+            <tr class="extra-row">
+                <td>220</td>
+                <td>As-Suwayda</td>
+            </tr>
+            <tr class="extra-row">
+                <td>180</td>
+                <td>Quneitra</td>
+            </tr>
+        </table>
+     <div class="map-container">
+        <img src="images/syria-map.jpg" alt="Syria Map" class="dest-map">
+
+         <div class="gradient-bar">
+                <span>Least Requested</span>
+                <div class="gradient"></div>
+                <span>Most Requested</span>
+         </div>
+     </div>
+    </div>
+
+    <a href="#" id="showAllBtn" onclick="showAllRows()">Show All Governorates</a>
+
+
+</div>
+
+
+    </main>
+
+
+    <script src="js/script.js"></script>
+    <script>
+var commCanvas = document.getElementById('commissionChart');
+if (commCanvas) {
+    var ctx = commCanvas.getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Commission',
+                data: [3200, 2800, 4100, 3600, 4500, 5100],
+                borderColor: '#f39c12',
+                backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                borderWidth: 3,
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: 'white',
+                pointBorderColor: '#f39c12',
+                pointBorderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(0,0,0,0.04)' },
+                    ticks: { callback: function(value) { return '$' + value; }, font: { size: 11 }, color: '#64748b' }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: { size: 12 }, color: '#334155' }
+                }
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>

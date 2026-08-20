@@ -1,0 +1,325 @@
+:root {
+    --dark-color: #19283f;
+    --baby-blue: #89cff0;
+    --baby-blue-dark: #5eb8e8;
+    --baby-blue-light: #e8f6fc;
+    --white: #ffffff;
+    --text-dark: #1a3a4a;
+    --text-muted: #5a7a8a;
+    --success: #28a745;
+    --warning: #f0ad4e;
+    --danger: #dc3545;
+    --shadow: 0 4px 20px rgba(94, 184, 232, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--baby-blue-light) 0%, var(--white) 50%);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar-brand-custom {
+    /* background: linear-gradient(90deg, var(--baby-blue-dark), var(--baby-blue));*/
+    background-color: var(--dark-color);
+    box-shadow: var(--shadow);
+}
+
+.navbar-brand-custom .navbar-brand,
+.navbar-brand-custom .nav-link {
+    color: var(--white) !important;
+}
+
+.navbar-brand-custom .nav-link:hover,
+.navbar-brand-custom .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+}
+
+/* Layout */
+.app-layout {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.sidebar {
+    flex: 0 0 280px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(137, 207, 240, 0.4);
+    padding: 1.25rem;
+    height: fit-content;
+    position: sticky;
+    top: 1rem;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 991.98px) {
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: none;
+        width: 100%;
+        position: static;
+    }
+}
+
+/* Profile header */
+.profile-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(137, 207, 240, 0.35);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--baby-blue), var(--baby-blue-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Section titles */
+.section-title {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--baby-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: var(--baby-blue-dark);
+}
+
+/* Trip cards */
+.trip-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 2px solid rgba(137, 207, 240, 0.5);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.trip-card.status-upcoming {
+    border-left: 4px solid var(--baby-blue-dark);
+}
+
+.trip-card.status-ready {
+    border-left: 4px solid var(--success);
+}
+
+.trip-card.status-not-ready {
+    border-left: 4px solid var(--warning);
+}
+
+.trip-card.status-completed {
+    border-left: 4px solid var(--text-muted);
+    opacity: 0.85;
+}
+
+.trip-card.status-suspended {
+    border-left: 4px solid var(--danger);
+}
+
+.trip-card.status-ongoing {
+    border: 2px solid var(--success);
+    animation: pulse-border 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+}
+
+@keyframes pulse-border {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.45);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+    }
+}
+
+.countdown {
+    font-family: "Consolas", "Monaco", monospace;
+    font-weight: 600;
+    color: var(--baby-blue-dark);
+    background: var(--baby-blue-light);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.countdown.urgent {
+    color: var(--danger);
+    background: #fde8e8;
+}
+
+.countdown.started {
+    color: var(--success);
+    background: #e8f5e9;
+}
+
+/* Sidebar trip items */
+.sidebar-trip {
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: var(--baby-blue-light);
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--baby-blue-dark);
+}
+
+.sidebar-trip.ongoing {
+    border-left-color: var(--success);
+    background: #e8f5e9;
+}
+
+.sidebar-trip small {
+    color: var(--text-muted);
+}
+
+/* Badges */
+.badge-ready {
+    background: var(--success);
+}
+
+.badge-not-ready {
+    background: var(--warning);
+    color: #333;
+}
+
+.badge-status {
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+/* Vehicle link */
+.vehicle-link {
+    color: var(--baby-blue-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.vehicle-link:hover {
+    text-decoration: underline;
+    color: #2a8fc4;
+}
+
+/* Tabs */
+.nav-tabs-custom {
+    border-bottom: 2px solid var(--baby-blue);
+}
+
+.nav-tabs-custom .nav-link {
+    color: var(--text-muted);
+    border: none;
+    font-weight: 500;
+}
+
+.nav-tabs-custom .nav-link.active {
+    color: var(--baby-blue-dark);
+    background: var(--baby-blue-light);
+    border-radius: 8px 8px 0 0;
+    border-bottom: 2px solid var(--baby-blue-dark);
+}
+
+.tab-content-panel {
+    background: var(--white);
+    border-radius: 0 0 12px 12px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(137, 207, 240, 0.35);
+    border-top: none;
+}
+
+.month-search-bar .form-control {
+    border-color: rgba(137, 207, 240, 0.8);
+    max-width: 320px;
+}
+
+.month-search-bar .form-control:focus {
+    border-color: var(--baby-blue-dark);
+    box-shadow: 0 0 0 0.2rem rgba(137, 207, 240, 0.35);
+}
+
+#monthSearchLabel {
+    color: var(--baby-blue-dark);
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-baby {
+    background: var(--baby-blue);
+    border-color: var(--baby-blue);
+    color: var(--white);
+}
+
+.btn-baby:hover {
+    background: var(--baby-blue-dark);
+    border-color: var(--baby-blue-dark);
+    color: var(--white);
+}
+
+.trip-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+/* Toast area */
+.toast-container-custom {
+    position: fixed;
+    top: 80px;
+    right: 1rem;
+    z-index: 1100;
+}
+
+/* Vehicle page */
+.vehicle-detail-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    border: 1px solid rgba(137, 207, 240, 0.4);
+}
+
+.condition-ok {
+    color: var(--success);
+}
+
+.condition-warn {
+    color: var(--warning);
+}
