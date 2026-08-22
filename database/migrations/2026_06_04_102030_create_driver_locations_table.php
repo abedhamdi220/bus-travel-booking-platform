@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('latitude',10,7);
             $table->decimal('longitude',10,7);
             $table->foreignId('driver_id')->constrained('drivers','id')->cascadeOnDelete();
-
+            
         });
     }
 

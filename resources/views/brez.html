@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Bus Travel Booking</title>
-
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="css/all.min.css">
-
+    
     <!-- CSS File -->
     <link rel="stylesheet" href="css/style.css">
      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -26,7 +26,7 @@
                 <i class="fas fa-bell"></i>
                 <sup>3</sup>
             </div>
-
+    
 
             <!-- اسم الأدمن والصورة -->
             <span><a href="admin-profile.html">Welcome, Admin</a></span>
@@ -60,15 +60,15 @@
                 <a href="sittings.html">Sittings</a>
             </li>
         </ul>
-    </aside>
+    </aside> 
 
     <!-- ==================== Main Content ==================== -->
     <main class="main-content">
-
+        
         <!-- Page Title -->
         <h2 class="page-title">📊 Dashboard</h2>
 
-
+      
 
         <!-- Statistics Cards -->
         <div class="stats-grid">
@@ -119,12 +119,12 @@
 
         </div>
 
-
-
+       
+ 
         <!-- ******************** User Statistics Chart *************************** -->
         <div class="chart-box">
             <h3>User Statistics</h3>
-
+            
             <!-- Legend -->
             <div class="chart-legend">
                 <span>
@@ -338,7 +338,7 @@
 
 
 </div>
-
+       
 
     </main>
 
@@ -348,7 +348,7 @@
 var commCanvas = document.getElementById('commissionChart');
 if (commCanvas) {
     var ctx = commCanvas.getContext('2d');
-
+    
     new Chart(ctx, {
         type: 'line',
         data: {
@@ -390,3 +390,4 @@ if (commCanvas) {
 
 </body>
 </html>
+

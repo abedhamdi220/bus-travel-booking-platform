@@ -35,7 +35,7 @@ class profileUpdateDriverRequest extends FormRequest
             'bio' => ['string', 'max:500'],
             'phone' => ['string', 'max:20'],
             'address' => ['string', 'max:255'],
-
+    
 
         ];
 

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Companies | Bus Travel Booking</title>
-
+    
     <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="css/all.min.css">
-
+    
     <!-- ملفات CSS المشتركة -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -124,7 +124,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- شركة بحالة Pending
+            <!-- شركة بحالة Pending 
             <tr>
                 <td>company1</td>
                 <td><span class="badge pending">Pending</span></td>

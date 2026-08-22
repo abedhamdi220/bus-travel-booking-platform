@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Notification;
 
 class DriverController extends Controller
 {
-
+ 
     public function getCompanyDrivers()
     {
         $company_id = Auth::guard('company')->id();

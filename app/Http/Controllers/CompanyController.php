@@ -8,6 +8,7 @@ use App\Models\Driver;
 use App\Models\Seats;
 use App\Models\Trip;
 use App\Models\Vehicle;
+use App\Services\CompanyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
+    protected CompanyService $companyService;
+
+    public function __construct(CompanyService $companyService)
+    {
+        $this->companyService = $companyService;
+    }
+
     public function logout(Request $request)
     {
         Auth::guard('company')->logout();
@@ -29,8 +37,8 @@ class CompanyController extends Controller
     {
         $company = Auth::guard('company')->user();
 
-        $theTOpRoute = $this->topRouteThisMonth($company);
-        $information = $this->companyMetrics($company);
+        $theTOpRoute = $this->companyService->getTopRouteThisMonth($company);
+        $information = $this->companyService->getCompanyMetrics($company);
         $recentBuses = $company->vehicles()->latest()->take(5)->get();
         $upcomingTrips = $company->trips()
             ->whereDate('dateTrip', '>=', today())
@@ -52,7 +60,7 @@ class CompanyController extends Controller
     public function indexProfile()
     {
         return view('company.profile', [
-            'information' => $this->companyProfile(Auth::guard('company')->user()),
+            'information' => $this->companyService->getCompanyProfile(Auth::guard('company')->user()),
         ]);
     }
 
@@ -97,7 +105,7 @@ class CompanyController extends Controller
             'vehicle_id' => ['required', 'integer'],
         ]);
 
-        $trip = $this->createTripWithSeats(
+        $trip = $this->companyService->createTripWithSeats(
             company: Auth::guard('company')->user(),
             data: [
                 ...$data,
@@ -119,7 +127,7 @@ class CompanyController extends Controller
      */
     public function addTrip(TripRequest $request, int $driver_id, int $vehicle_id)
     {
-        $trip = $this->createTripWithSeats(
+        $trip = $this->companyService->createTripWithSeats(
             company: Auth::guard('company')->user(),
             data: $request->validated(),
             driverId: $driver_id,
@@ -330,100 +338,5 @@ class CompanyController extends Controller
         $company->unreadNotifications->markAsRead();
 
         return response()->json(['status' => 'success']);
-    }
-
-    private function createTripWithSeats(Company $company, array $data, int $driverId, int $vehicleId): Trip
-    {
-        $driver = Driver::where('company_id', $company->id)->findOrFail($driverId);
-        $vehicle = Vehicle::where('company_id', $company->id)->findOrFail($vehicleId);
-
-        abort_unless($driver->state === 'Approved' && $driver->availability_state === 'availability', 422, 'The selected driver is unavailable.');
-        abort_unless($vehicle->state === 'availability', 422, 'The selected vehicle is unavailable.');
-
-        $totalSeats = $vehicle->type_vehicle === 'VIP' ? 35 : 45;
-
-        return DB::transaction(function () use ($company, $data, $driver, $vehicle, $totalSeats): Trip {
-            $trip = Trip::create([
-                'company_id' => $company->id,
-                'driver_id' => $driver->id,
-                'vehicle_id' => $vehicle->id,
-                'departure_city' => $data['departure_city'],
-                'destination' => $data['destination'],
-                'dateTrip' => $data['dateTrip'],
-                'timeTrip' => $data['timeTrip'],
-                'cost' => $data['cost'],
-                'totalSeats' => $totalSeats,
-                'trip_type' => $data['trip_type'],
-                'recurrence' => $data['recurrence'],
-                'days' => $data['days'] ?? null,
-                'break_duration' => $data['break_duration'] ?? null,
-                'state' => 'scheduled',
-            ]);
-
-            $seats = [];
-            for ($seatNumber = 1; $seatNumber <= $totalSeats; $seatNumber++) {
-                $seats[] = [
-                    'trip_id' => $trip->id,
-                    'number_seat' => $seatNumber,
-                    'state' => 'avaliable',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
-            }
-            Seats::insert($seats);
-
-            return $trip;
-        });
-    }
-
-    private function topRouteThisMonth(Company $company): array
-    {
-        $topRoute = $company->trips()
-            ->select('departure_city', 'destination', DB::raw('count(*) as trip_count'))
-            ->whereMonth('dateTrip', now()->month)
-            ->groupBy('departure_city', 'destination')
-            ->orderByDesc('trip_count')
-            ->first();
-
-        if (! $topRoute) {
-            return ['message' => 'no trip this month'];
-        }
-
-        return [
-            'message' => 'success',
-            'departure_city' => $topRoute->departure_city,
-            'destination' => $topRoute->destination,
-            'trip_count' => $topRoute->trip_count,
-        ];
-    }
-
-    private function companyMetrics(Company $company): array
-    {
-        $totalSeats = (int) $company->trips()->sum('totalSeats');
-        $bookedSeats = (int) DB::table('seats')
-            ->join('trips', 'seats.trip_id', '=', 'trips.id')
-            ->where('trips.company_id', $company->id)
-            ->where('seats.state', 'booked')
-            ->count();
-
-        return [
-            'activtripsThisday' => $company->trips()->whereDate('dateTrip', today())->where('state', 'in_progress')->count(),
-            'occupancyRate' => $totalSeats > 0 ? $bookedSeats / $totalSeats : 0,
-            'countSeatsAvaliable' => max($totalSeats - $bookedSeats, 0),
-            'countSeatsBooked' => $bookedSeats,
-            'countVehicle' => $company->vehicles()->count(),
-            'countDriver' => $company->drivers()->count(),
-        ];
-    }
-
-    private function companyProfile(Company $company): array
-    {
-        return [
-            'name' => $company->name,
-            'email' => $company->email,
-            'phone' => $company->phone,
-            'address' => $company->address,
-            'bio' => optional($company->profile)->bio,
-        ];
     }
 }

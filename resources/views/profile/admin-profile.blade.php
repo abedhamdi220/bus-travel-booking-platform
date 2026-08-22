@@ -171,8 +171,8 @@ if (sidebarLogo) {
 
 
 <!--***************************************زر كلمات المرور************************************-->
-
-
+        
+        
 document.addEventListener('DOMContentLoaded', function() {
     var savePasswordBtn = document.querySelector('.btn-save-password');
     if (savePasswordBtn) {

@@ -68,7 +68,7 @@ class AdminController extends Controller
     public function updateStateCompany(Request $request, int $company_id)
     {
         $request->validate([
-            'state' => 'required|in:Pending,Approved,Rejected'
+            'state' => 'required|in:Pending,Approved,Rejected' 
         ]);
 
         $company = Company::findOrFail($company_id);

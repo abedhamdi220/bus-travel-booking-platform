@@ -48,7 +48,7 @@
             <li class="menu-item">
                 <i class="fas fa-tags"></i><a href="company-offers.html">Offers</a>
             </li>
-
+          
         </ul>
     </aside>
 

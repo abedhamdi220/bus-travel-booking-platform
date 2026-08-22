@@ -58,7 +58,7 @@
                 <i class="fas fa-tags"></i>
                 <a href="company-offers.html">Offers</a>
             </li>
-
+           
         </ul>
     </aside>
 
@@ -265,7 +265,7 @@
     </main>
 
     <script src="js/script.js"></script>
-
+    
     <!-- كود تفعيل البطاقات والفلترة -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -274,7 +274,7 @@
             card.addEventListener('click', function() {
                 var filter = this.getAttribute('data-filter');
                 filterTable(filter);
-
+                
                 document.querySelectorAll('#filterButtons button').forEach(function(btn) {
                     btn.classList.remove('filter-active');
                     if (btn.getAttribute('data-filter') === filter) {
@@ -288,7 +288,7 @@
             btn.addEventListener('click', function() {
                 var filter = this.getAttribute('data-filter');
                 filterTable(filter);
-
+                
                 document.querySelectorAll('#filterButtons button').forEach(function(b) {
                     b.classList.remove('filter-active');
                 });
